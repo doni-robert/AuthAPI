@@ -1,0 +1,26 @@
+services:
+  ats_frontend:
+    build: ./ats_frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - ./ats_frontend:/app:delegated
+      - /app/node_modules
+    command: npm run dev
+    working_dir: /app
+    restart: always
+
+  ats_backend:
+    build:
+      context: ./ATSBackend
+      dockerfile: Dockerfile
+    ports:
+      - "5261:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ./ATSBackend:/app
+    restart: always
