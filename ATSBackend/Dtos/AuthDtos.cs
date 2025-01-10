@@ -16,4 +16,19 @@ namespace ATSBackend.Dtos
         public required string Email { get; set; }
         public required string Password { get; set; }
     }
+    
+    // PasswordRecoveryDto class represents the data required to request a password recovery
+    public class PasswordRecoveryDto
+    {
+        public required string Email { get; set;}
+    }
+    
+    // ResetPasswordDto class represents the data required to reset the user's password
+    public class ResetPasswordDto
+    {
+        public required string Email { get; set; }
+        public required string Token { get; set; }
+        public required string NewPassword { get; set; }
+
+    }
 }
